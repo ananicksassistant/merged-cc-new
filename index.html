@@ -3,139 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merged — Content Creators | Video, 3D, Motion & AI</title>
-    <meta name="description" content="We create content that gets noticed. Video, 3D, Motion, AI.">
+    <title>FRAME//SHIFT — Merged Studio</title>
+    <meta name="description" content="We don't show projects. We drop you inside the process.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Film Grain Overlay -->
+    <div class="grain-overlay"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="container nav__container">
-            <a href="#" class="nav__logo">Merged</a>
+            <a href="#" class="nav__logo magnetic" data-magnetic>FRAME//SHIFT</a>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="#work" class="nav__link magnetic" data-magnetic>Work</a></li>
+                <li><a href="#process" class="nav__link magnetic" data-magnetic>Process</a></li>
+                <li><a href="#services" class="nav__link magnetic" data-magnetic>Services</a></li>
+                <li><a href="#contact" class="nav__link nav__link--cta magnetic" data-magnetic>Start Project</a></li>
+            </ul>
             <button class="nav__toggle" id="navToggle" aria-label="Menu">
                 <span></span><span></span>
             </button>
-            <ul class="nav__menu" id="navMenu">
-                <li><a href="#work" class="nav__link">Work</a></li>
-                <li><a href="#services" class="nav__link">Services</a></li>
-                <li><a href="#about" class="nav__link">About</a></li>
-                <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
-            </ul>
         </div>
     </nav>
 
-    <!-- Hero - Full Video Background -->
+    <!-- 1. COLD OPEN HERO -->
     <section class="hero" id="hero">
-        <div class="hero__video-wrapper">
-            <video class="hero__video" autoplay muted loop playsinline poster="images/01-1.jpg">
+        <div class="hero__video-container">
+            <video class="hero__video" autoplay muted loop playsinline>
                 <source src="media/showreel-2024.mp4" type="video/mp4">
             </video>
-            <div class="hero__overlay"></div>
+            <div class="hero__video-overlay"></div>
         </div>
+        
         <div class="hero__content">
-            <div class="hero__tag">
-                <span class="hero__tag-line"></span>
-                <span>Video • Motion • 3D • AI</span>
+            <div class="hero__kicker">
+                <span class="hero__kicker-line"></span>
+                <span class="hero__kicker-text">Merged Studio</span>
             </div>
-            <h1 class="hero__title">We create content<br><span>that gets noticed.</span></h1>
-            <p class="hero__desc">Premium video production, 3D animation, and AI-driven visuals for brands that demand excellence.</p>
-            <a href="#work" class="hero__cta">View Showreel</a>
+            
+            <h1 class="hero__title">
+                <span class="hero__title-line" data-splitting>Frames that</span>
+                <span class="hero__title-line" data-splitting>pull people in.</span>
+            </h1>
+            
+            <p class="hero__subtitle">Built like cinema. Shipped like strategy.</p>
+            
+            <div class="hero__cta">
+                <a href="#work" class="btn btn--primary magnetic" data-magnetic>
+                    <span>Enter the reel</span>
+                </a>
+                <a href="#contact" class="btn btn--secondary magnetic" data-magnetic>
+                    <span>Start a project</span>
+                </a>
+            </div>
         </div>
+        
+        <div class="hero__meta">
+            <span>Video</span>
+            <span class="hero__meta-dot"></span>
+            <span>3D</span>
+            <span class="hero__meta-dot"></span>
+            <span>Motion</span>
+            <span class="hero__meta-dot"></span>
+            <span>AI</span>
+        </div>
+        
         <div class="hero__scroll">
-            <span>Scroll</span>
+            <div class="hero__scroll-text">Scroll</div>
             <div class="hero__scroll-line"></div>
         </div>
     </section>
 
-    <!-- Featured Work - Heritage Customs (Video) -->
-    <section class="showcase showcase--dark" id="work">
-        <div class="showcase__video-wrapper">
-            <video class="showcase__video" autoplay muted loop playsinline>
-                <source src="media/Heritage-Thumb.mp4" type="video/mp4">
-            </video>
-            <div class="showcase__overlay"></div>
-        </div>
-        <div class="container showcase__content">
-            <span class="showcase__label">Featured Project</span>
-            <h2 class="showcase__title">Heritage Customs</h2>
-            <p class="showcase__desc">Bringing visionary automotive concepts to life through cinematic storytelling and cutting-edge 3D visualization.</p>
-            <div class="showcase__tags">
-                <span class="tag">3D</span>
-                <span class="tag">Video</span>
-                <span class="tag">Color Grading</span>
+    <!-- 2. CHAOS TO SIGNAL — Assembly -->
+    <section class="assembly" id="assembly">
+        <div class="assembly__container">
+            <div class="assembly__header">
+                <span class="assembly__label">The Process</span>
+                <h2 class="assembly__title">From loose ideas<br>to locked frames.</h2>
+            </div>
+            
+            <div class="assembly__grid">
+                <div class="assembly__item" data-assemble>
+                    <div class="assembly__visual assembly__visual--storyboard">
+                        <div class="storyboard-grid">
+                            <div class="storyboard-frame"></div>
+                            <div class="storyboard-frame"></div>
+                            <div class="storyboard-frame"></div>
+                            <div class="storyboard-frame"></div>
+                        </div>
+                    </div>
+                    <span class="assembly__tag">Storyboard</span>
+                </div>
+                
+                <div class="assembly__item" data-assemble>
+                    <div class="assembly__visual assembly__visual--waveform">
+                        <div class="waveform">
+                            <span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <span class="assembly__tag">Sound Design</span>
+                </div>
+                
+                <div class="assembly__item" data-assemble>
+                    <div class="assembly__visual assembly__visual--wireframe">
+                        <div class="wireframe-cube">
+                            <div class="cube-face"></div>
+                            <div class="cube-face"></div>
+                            <div class="cube-face"></div>
+                        </div>
+                    </div>
+                    <span class="assembly__tag">3D Build</span>
+                </div>
+                
+                <div class="assembly__item assembly__item--final" data-assemble>
+                    <div class="assembly__visual assembly__visual--final">
+                        <img src="images/01-1.jpg" alt="Final frame">
+                    </div>
+                    <span class="assembly__tag">Locked Frame</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Project Grid -->
-    <section class="projects">
+    <!-- 3. SERVICES CHAMBER -->
+    <section class="services-chamber" id="services">
+        <div class="services-chamber__bg" id="servicesBg"></div>
+        
         <div class="container">
-            <header class="section-header">
-                <span class="section-header__label">Selected Work</span>
-                <h2 class="section-header__title">Projects that<br>make an impact.</h2>
-            </header>
+            <div class="services-chamber__header">
+                <span class="section-label">Capabilities</span>
+                <h2 class="section-title">Four disciplines.<br>One workflow.</h2>
+            </div>
             
-            <div class="projects__grid">
-                <!-- Sea Ray -->
-                <article class="project-card project-card--large">
-                    <div class="project-card__media">
+            <div class="services-chamber__grid">
+                <div class="service-panel" data-service="film">
+                    <div class="service-panel__number">01</div>
+                    <h3 class="service-panel__title">Film</h3>
+                    <p class="service-panel__desc">Stories built for attention.</p>
+                    <div class="service-panel__visual">
                         <video autoplay muted loop playsinline>
-                            <source src="media/Sea-Ray_Finland_Final_2082022.mp4" type="video/mp4">
-                            <img src="images/08-1.jpg" alt="Sea Ray">
+                            <source src="media/Heritage-Thumb.mp4" type="video/mp4">
                         </video>
-                        <div class="project-card__overlay"></div>
                     </div>
-                    <div class="project-card__content">
-                        <span class="project-card__category">Luxury Marine</span>
-                        <h3 class="project-card__title">Sea Ray</h3>
-                        <p class="project-card__desc">Capturing the thrill and craftsmanship of America's leading boat brand.</p>
-                        <div class="project-card__tags">
-                            <span>Video</span>
-                            <span>3D</span>
-                            <span>Drone</span>
-                        </div>
+                </div>
+                
+                <div class="service-panel" data-service="motion">
+                    <div class="service-panel__number">02</div>
+                    <h3 class="service-panel__title">Motion</h3>
+                    <p class="service-panel__desc">Design that moves with intent.</p>
+                    <div class="service-panel__visual">
+                        <img src="images/FRAME-5.png" alt="Motion">
                     </div>
-                </article>
-
-                <!-- Brunswick -->
-                <article class="project-card">
-                    <div class="project-card__media">
-                        <img src="images/FRAME-5.png" alt="Brunswick">
-                        <div class="project-card__overlay"></div>
-                    </div>
-                    <div class="project-card__content">
-                        <span class="project-card__category">Corporate</span>
-                        <h3 class="project-card__title">Brunswick Corporation</h3>
-                        <p class="project-card__desc">World's largest tech event presentation.</p>
-                        <div class="project-card__tags">
-                            <span>3D</span>
-                            <span>Motion</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Africa Drone -->
-                <article class="project-card">
-                    <div class="project-card__media">
+                </div>
+                
+                <div class="service-panel" data-service="3d">
+                    <div class="service-panel__number">03</div>
+                    <h3 class="service-panel__title">3D</h3>
+                    <p class="service-panel__desc">Worlds crafted frame by frame.</p>
+                    <div class="service-panel__visual">
                         <video autoplay muted loop playsinline>
                             <source src="media/Afrika-Shot.mp4" type="video/mp4">
                         </video>
-                        <div class="project-card__overlay"></div>
                     </div>
-                    <div class="project-card__content">
-                        <span class="project-card__category">Aerial</span>
-                        <h3 class="project-card__title">African Landscapes</h3>
-                        <p class="project-card__desc">Breathtaking drone cinematography.</p>
-                        <div class="project-card__tags">
+                </div>
+                
+                <div class="service-panel" data-service="ai">
+                    <div class="service-panel__number">04</div>
+                    <h3 class="service-panel__title">AI Visuals</h3>
+                    <p class="service-panel__desc">New tools. Real creative direction.</p>
+                    <div class="service-panel__visual">
+                        <img src="images/08-1.jpg" alt="AI Visuals">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FEATURED CASE WALL -->
+    <section class="case-wall" id="work">
+        <div class="container">
+            <div class="case-wall__header">
+                <span class="section-label">Selected Work</span>
+                <h2 class="section-title">Projects that<br>leave a mark.</h2>
+            </div>
+            
+            <div class="case-wall__grid">
+                <!-- Large Feature -->
+                <article class="case-card case-card--feature" data-case>
+                    <div class="case-card__media">
+                        <video autoplay muted loop playsinline>
+                            <source src="media/Heritage-Thumb.mp4" type="video/mp4">
+                        </video>
+                        <div class="case-card__overlay"></div>
+                    </div>
+                    <div class="case-card__content">
+                        <span class="case-card__client">Heritage Customs</span>
+                        <h3 class="case-card__title">Visionary automotive concepts brought to life</h3>
+                        <div class="case-card__meta">
+                            <span>3D</span>
+                            <span>Video</span>
+                            <span>Color</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Tall -->
+                <article class="case-card case-card--tall" data-case>
+                    <div class="case-card__media">
+                        <video autoplay muted loop playsinline>
+                            <source src="media/Sea-Ray_Finland_Final_2082022.mp4" type="video/mp4">
+                        </video>
+                        <div class="case-card__overlay"></div>
+                    </div>
+                    <div class="case-card__content">
+                        <span class="case-card__client">Sea Ray</span>
+                        <h3 class="case-card__title">Luxury marine cinematography</h3>
+                        <div class="case-card__meta">
+                            <span>Video</span>
                             <span>Drone</span>
-                            <span>Cinematic</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Wide -->
+                <article class="case-card case-card--wide" data-case>
+                    <div class="case-card__media">
+                        <img src="images/FRAME-5.png" alt="Brunswick">
+                        <div class="case-card__overlay"></div>
+                    </div>
+                    <div class="case-card__content">
+                        <span class="case-card__client">Brunswick Corporation</span>
+                        <h3 class="case-card__title">World's largest tech event presentation</h3>
+                        <div class="case-card__meta">
+                            <span>3D</span>
+                            <span>Motion</span>
+                            <span>Event</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Standard -->
+                <article class="case-card" data-case>
+                    <div class="case-card__media">
+                        <video autoplay muted loop playsinline>
+                            <source src="media/Afrika-Shot.mp4" type="video/mp4">
+                        </video>
+                        <div class="case-card__overlay"></div>
+                    </div>
+                    <div class="case-card__content">
+                        <span class="case-card__client">African Landscapes</span>
+                        <h3 class="case-card__title">Breathtaking aerial cinematography</h3>
+                        <div class="case-card__meta">
+                            <span>Drone</span>
+                            <span>Documentary</span>
                         </div>
                     </div>
                 </article>
@@ -143,164 +280,173 @@
         </div>
     </section>
 
-    <!-- Aerial Showcase - Africa -->
-    <section class="showcase showcase--aerial">
-        <div class="showcase__video-wrapper">
-            <video class="showcase__video" autoplay muted loop playsinline>
-                <source src="media/Afrika-Shot.mp4" type="video/mp4">
-            </video>
-            <div class="showcase__overlay showcase__overlay--heavy"></div>
-        </div>
-        <div class="container showcase__content showcase__content--center">
-            <span class="showcase__label">Aerial Cinematography</span>
-            <h2 class="showcase__title">Capturing the World<br>from Above</h2>
-            <p class="showcase__desc">Professional drone operations delivering breathtaking 4K aerial footage for commercials, documentaries, and brand films.</p>
-            <div class="showcase__stats">
-                <div class="stat">
-                    <span class="stat__number">4K</span>
-                    <span class="stat__label">Resolution</span>
-                </div>
-                <div class="stat">
-                    <span class="stat__number">60</span>
-                    <span class="stat__label">FPS</span>
-                </div>
-                <div class="stat">
-                    <span class="stat__number">DJI</span>
-                    <span class="stat__label">Certified</span>
-                </div>
+    <!-- 5. MAKING-OF TUNNEL — Horizontal Scroll -->
+    <section class="process-tunnel" id="process">
+        <div class="process-tunnel__sticky">
+            <div class="process-tunnel__header">
+                <span class="section-label">The Process</span>
+                <h2 class="section-title">How we build.</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services" id="services">
-        <div class="container">
-            <header class="section-header section-header--center">
-                <span class="section-header__label">What We Do</span>
-                <h2 class="section-header__title">Full-service<br>content creation</h2>
-            </header>
             
-            <div class="services__grid">
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                        </svg>
+            <div class="process-tunnel__track" id="processTrack">
+                <div class="process-phase" data-phase="idea">
+                    <div class="process-phase__number">01</div>
+                    <h3 class="process-phase__title">Idea</h3>
+                    <p class="process-phase__desc">Concept, references, strategy. The foundation.</p>
+                    <div class="process-phase__visual">
+                        <div class="visual-idea">
+                            <div class="idea-note"></div>
+                            <div class="idea-note"></div>
+                            <div class="idea-note"></div>
+                        </div>
                     </div>
-                    <h3 class="service-card__title">Video Production</h3>
-                    <p class="service-card__desc">From concept to final cut. Commercials, brand films, and everything in between.</p>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <circle cx="12" cy="12" r="4"></circle>
-                        </svg>
+                
+                <div class="process-phase" data-phase="script">
+                    <div class="process-phase__number">02</div>
+                    <h3 class="process-phase__title">Script</h3>
+                    <p class="process-phase__desc">Structure, beats, narrative flow.</p>
+                    <div class="process-phase__visual">
+                        <div class="visual-script">
+                            <div class="script-line"></div>
+                            <div class="script-line"></div>
+                            <div class="script-line"></div>
+                        </div>
                     </div>
-                    <h3 class="service-card__title">3D Animation</h3>
-                    <p class="service-card__desc">Photorealistic 3D renders and animations for products and environments.</p>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                            <path d="M2 17l10 5 10-5"></path>
-                            <path d="M2 12l10 5 10-5"></path>
-                        </svg>
+                
+                <div class="process-phase" data-phase="build">
+                    <div class="process-phase__number">03</div>
+                    <h3 class="process-phase__title">Build</h3>
+                    <p class="process-phase__desc">Rigs, models, sets, shoots.</p>
+                    <div class="process-phase__visual">
+                        <div class="visual-build">
+                            <img src="images/01-1.jpg" alt="Build">
+                        </div>
                     </div>
-                    <h3 class="service-card__title">Aerial / Drone</h3>
-                    <p class="service-card__desc">Cinematic drone footage with certified pilots and 4K+ resolution.</p>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
+                
+                <div class="process-phase" data-phase="edit">
+                    <div class="process-phase__number">04</div>
+                    <h3 class="process-phase__title">Edit</h3>
+                    <p class="process-phase__desc">Cuts, pacing, motion, energy.</p>
+                    <div class="process-phase__visual">
+                        <div class="visual-edit">
+                            <div class="timeline"></div>
+                            <div class="timeline-markers">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="service-card__title">Motion Graphics</h3>
-                    <p class="service-card__desc">Dynamic motion graphics that bring your brand story to life.</p>
+                </div>
+                
+                <div class="process-phase" data-phase="grade">
+                    <div class="process-phase__number">05</div>
+                    <h3 class="process-phase__title">Grade</h3>
+                    <p class="process-phase__desc">Color, polish, contrast. Final lock.</p>
+                    <div class="process-phase__visual">
+                        <div class="visual-grade">
+                            <img src="images/08-1.jpg" alt="Grade">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sea Ray Marine Showcase -->
-    <section class="showcase showcase--marine">
-        <div class="showcase__video-wrapper">
-            <video class="showcase__video" autoplay muted loop playsinline>
-                <source src="media/Sea-Ray_Finland_Final_2082022.mp4" type="video/mp4">
-            </video>
-            <div class="showcase__overlay"></div>
-        </div>
-        <div class="container showcase__content showcase__content--right">
-            <span class="showcase__label">Marine Excellence</span>
-            <h2 class="showcase__title">Sea Ray</h2>
-            <p class="showcase__desc">The perfect blend of performance, comfort, and craftsmanship. We capture the essence of luxury boating.</p>
-            <a href="#contact" class="showcase__cta">Start Your Project</a>
+    <!-- 6. STUDIO MANIFESTO -->
+    <section class="manifesto" id="about">
+        <div class="container">
+            <div class="manifesto__statements">
+                <div class="manifesto__statement" data-manifesto>
+                    <span class="manifesto__number">01</span>
+                    <h2 class="manifesto__text">We cut noise.</h2>
+                </div>
+                <div class="manifesto__statement" data-manifesto>
+                    <span class="manifesto__number">02</span>
+                    <h2 class="manifesto__text">We build memory.</h2>
+                </div>
+                <div class="manifesto__statement" data-manifesto>
+                    <span class="manifesto__number">03</span>
+                    <h2 class="manifesto__text">We choreograph attention.</h2>
+                </div>
+                <div class="manifesto__statement" data-manifesto>
+                    <span class="manifesto__number">04</span>
+                    <h2 class="manifesto__text">We make complexity<br>feel cinematic.</h2>
+                </div>
+                <div class="manifesto__statement" data-manifesto>
+                    <span class="manifesto__number">05</span>
+                    <h2 class="manifesto__text">We merge craft<br>with speed.</h2>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Team -->
-    <section class="team" id="about">
+    <!-- 7. PROOF OF IMPACT -->
+    <section class="proof" id="proof">
         <div class="container">
-            <header class="section-header section-header--center">
-                <span class="section-header__label">The Team</span>
-                <h2 class="section-header__title">Passionate makers.</h2>
-            </header>
+            <div class="proof__header">
+                <span class="section-label">Proof</span>
+                <h2 class="section-title">Trusted by<br>industry leaders.</h2>
+            </div>
             
-            <div class="team__grid">
-                <div class="team-member">
-                    <div class="team-member__image">
-                        <img src="images/ARNO-1.jpg" alt="Arno">
-                    </div>
-                    <h3 class="team-member__name">Arno</h3>
-                    <p class="team-member__role">Director</p>
+            <div class="proof__grid">
+                <div class="proof__clients">
+                    <div class="client-logo">Beter Bed</div>
+                    <div class="client-logo">Bol</div>
+                    <div class="client-logo">Boston Whaler</div>
+                    <div class="client-logo">Brunswick</div>
+                    <div class="client-logo">Deloitte</div>
+                    <div class="client-logo">KPN</div>
+                    <div class="client-logo">NATO</div>
+                    <div class="client-logo">Sea Ray</div>
                 </div>
-                <div class="team-member">
-                    <div class="team-member__image">
-                        <img src="images/CHIEL-1.jpg" alt="Chiel">
-                    </div>
-                    <h3 class="team-member__name">Chiel</h3>
-                    <p class="team-member__role">Creative Director</p>
+                
+                <div class="proof__testimonial">
+                    <blockquote>
+                        <p>"The content came out perfect. We had executives, colleagues and consumers commenting on the content. The brand teams are eager to use their slice."</p>
+                        <footer>
+                            <cite>Eric Jensen</cite>
+                            <span>Video Marketing Strategy, Brunswick</span>
+                        </footer>
+                    </blockquote>
                 </div>
-                <div class="team-member">
-                    <div class="team-member__image">
-                        <img src="images/NISSE-1.jpg" alt="Nisse">
+                
+                <div class="proof__metrics">
+                    <div class="metric">
+                        <span class="metric__number">50+</span>
+                        <span class="metric__label">Projects Delivered</span>
                     </div>
-                    <h3 class="team-member__name">Nisse</h3>
-                    <p class="team-member__role">3D Artist</p>
-                </div>
-                <div class="team-member">
-                    <div class="team-member__image">
-                        <img src="images/GIDEON.jpg" alt="Gideon">
+                    <div class="metric">
+                        <span class="metric__number">12</span>
+                        <span class="metric__label">Industry Awards</span>
                     </div>
-                    <h3 class="team-member__name">Gideon</h3>
-                    <p class="team-member__role">Editor / AI</p>
+                    <div class="metric">
+                        <span class="metric__number">6</span>
+                        <span class="metric__label">Core Team Members</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact__grid">
-                <div class="contact__content">
-                    <span class="contact__label">Let's chat.</span>
-                    <h2 class="contact__title">Ready to create<br>something amazing?</h2>
-                    <p class="contact__desc">We'd love to hear about your project. Whether it's a commercial, brand film, or full campaign.</p>
-                    <a href="mailto:hello@merged.cc" class="contact__cta">Start a Project</a>
-                    <div class="contact__info">
-                        <a href="mailto:hello@merged.cc">hello@merged.cc</a>
-                        <span>Amsterdam, NL</span>
-                    </div>
-                </div>
+    <!-- 8. FINAL FRAME CTA -->
+    <section class="final-frame" id="contact">
+        <div class="final-frame__video">
+            <video autoplay muted loop playsinline>
+                <source src="media/showreel-2024.mp4" type="video/mp4">
+            </video>
+            <div class="final-frame__overlay"></div>
+        </div>
+        
+        <div class="final-frame__content">
+            <h2 class="final-frame__title">Ready to make something<br>people actually feel?</h2>
+            <a href="mailto:hello@merged.cc" class="btn btn--large btn--primary magnetic" data-magnetic>
+                <span>Start a project</span>
+            </a>
+            <div class="final-frame__contact">
+                <a href="mailto:hello@merged.cc">hello@merged.cc</a>
+                <span>Amsterdam, NL</span>
             </div>
         </div>
     </section>
@@ -310,13 +456,13 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <span class="footer__logo">Merged</span>
-                    <p>Content that moves brands.</p>
+                    <span class="footer__logo">FRAME//SHIFT</span>
+                    <p>By Merged Studio</p>
                 </div>
                 <nav class="footer__nav">
                     <a href="#work">Work</a>
+                    <a href="#process">Process</a>
                     <a href="#services">Services</a>
-                    <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                 </nav>
                 <div class="footer__social">
@@ -326,7 +472,7 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>© 2026 Merged Content Creators</p>
+                <p>© 2026 Merged Studio. All rights reserved.</p>
             </div>
         </div>
     </footer>
