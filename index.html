@@ -5,63 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merged — Content Creators | Video, 3D, Motion & AI</title>
     <meta name="description" content="Merged by passion and know-how. We turn ideas into content, start to finish. Video, Motion, Production, 3D & AI.">
-    <meta name="keywords" content="video production, 3D animation, motion graphics, AI content, creative agency">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Merged — Content Creators">
-    <meta property="og:description" content="We turn ideas into content, start to finish.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://merged.cc">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader__content">
+            <div class="preloader__logo">Merged</div>
+            <div class="preloader__bar">
+                <div class="preloader__progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav__container">
-            <a href="#" class="nav__logo">
+            <a href="#" class="nav__logo magnetic" data-magnetic>
                 <span class="nav__logo-text">Merged</span>
             </a>
             
             <button class="nav__toggle" id="navToggle" aria-label="Menu">
                 <span></span>
                 <span></span>
-                <span></span>
             </button>
             
             <ul class="nav__menu" id="navMenu">
-                <li><a href="#work" class="nav__link">Work</a></li>
-                <li><a href="#services" class="nav__link">Services</a></li>
-                <li><a href="#about" class="nav__link">About</a></li>
-                <li><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
+                <li><a href="#work" class="nav__link magnetic" data-magnetic>Work</a></li>
+                <li><a href="#services" class="nav__link magnetic" data-magnetic>Services</a></li>
+                <li><a href="#about" class="nav__link magnetic" data-magnetic>About</a></li>
+                <li><a href="#contact" class="nav__link nav__link--cta magnetic" data-magnetic>Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero__bg"></div>
+        <div class="hero__video-container">
+            <video class="hero__video" autoplay muted loop playsinline poster="images/01-1.jpg">
+                <source src="https://cdn.coverr.co/videos/coverr-cinematic-drone-shot-of-a-car-on-a-winding-road-3395/1080p.mp4" type="video/mp4">
+            </video>
+            <div class="hero__video-overlay"></div>
+        </div>
+        
         <div class="hero__container">
-            <p class="hero__label reveal">Video • Motion • Production • 3D • AI</p>
-            <h1 class="hero__title reveal">
-                <span class="hero__title-line">Merged by passion</span>
-                <span class="hero__title-line">and know-how.</span>
+            <p class="hero__label">Video • Motion • Production • 3D • AI</p>
+            <h1 class="hero__title">
+                <span class="hero__title-line" data-splitting>Merged by passion</span>
+                <span class="hero__title-line" data-splitting>and know-how.</span>
             </h1>
-            <p class="hero__subtitle reveal">We turn ideas into content, start to finish.</p>
-            <div class="hero__cta reveal">
-                <a href="#work" class="btn btn--primary">View Showreel</a>
+            <p class="hero__subtitle">We turn ideas into content, start to finish.</p>
+            <div class="hero__cta">
+                <button class="btn btn--primary btn--play" id="showreelBtn">
+                    <span class="btn__icon">▶</span>
+                    <span>Watch Showreel</span>
+                </button>
                 <a href="#contact" class="btn btn--secondary">Get in Touch</a>
             </div>
         </div>
+        
+        <div class="hero__marquee">
+            <div class="marquee__content">
+                <span>Video</span> • <span>Motion</span> • <span>Production</span> • <span>3D</span> • <span>AI</span> • 
+                <span>Video</span> • <span>Motion</span> • <span>Production</span> • <span>3D</span> • <span>AI</span> •
+            </div>
+        </div>
+        
         <div class="hero__scroll">
             <span class="hero__scroll-text">Scroll</span>
             <div class="hero__scroll-line"></div>
@@ -72,18 +96,19 @@
     <section class="work" id="work">
         <div class="container">
             <header class="section-header">
-                <span class="section-header__label">Selected Work</span>
-                <h2 class="section-header__title">We create content<br>that gets noticed.</h2>
+                <span class="section-header__label" data-scroll>Selected Work</span>
+                <h2 class="section-header__title" data-scroll>We create content<br>that gets noticed.</h2>
             </header>
             
-            <div class="work__grid">
-                <!-- Project 1: Heritage Customs -->
-                <article class="work__item reveal">
+            <div class="work__list">
+                <!-- Project 1 -->
+                <article class="work__item" data-scroll>
                     <div class="work__image-wrapper">
-                        <img src="images/01-1.jpg" alt="Heritage Customs" class="work__image" loading="lazy">
+                        <img src="images/01-1.jpg" alt="Heritage Customs" class="work__image">
                         <div class="work__overlay">
                             <span class="work__category">3D</span>
                         </div>
+                        <div class="work__cursor-text">View</div>
                     </div>
                     <div class="work__content">
                         <h3 class="work__title">Heritage Customs</h3>
@@ -91,13 +116,14 @@
                     </div>
                 </article>
 
-                <!-- Project 2: Sea Ray -->
-                <article class="work__item reveal">
+                <!-- Project 2 -->
+                <article class="work__item work__item--reversed" data-scroll>
                     <div class="work__image-wrapper">
-                        <img src="images/08-1.jpg" alt="Sea Ray" class="work__image" loading="lazy">
+                        <img src="images/08-1.jpg" alt="Sea Ray" class="work__image">
                         <div class="work__overlay">
                             <span class="work__category">Video • 3D</span>
                         </div>
+                        <div class="work__cursor-text">View</div>
                     </div>
                     <div class="work__content">
                         <h3 class="work__title">Sea Ray</h3>
@@ -105,39 +131,20 @@
                     </div>
                 </article>
 
-                <!-- Project 3: Brunswick -->
-                <article class="work__item reveal">
+                <!-- Project 3 -->
+                <article class="work__item" data-scroll>
                     <div class="work__image-wrapper">
-                        <img src="images/FRAME-5.png" alt="Brunswick" class="work__image" loading="lazy">
+                        <img src="images/FRAME-5.png" alt="Brunswick" class="work__image">
                         <div class="work__overlay">
                             <span class="work__category">3D • Motion • Video</span>
                         </div>
+                        <div class="work__cursor-text">View</div>
                     </div>
                     <div class="work__content">
                         <h3 class="work__title">Brunswick Corporation</h3>
                         <p class="work__desc">Brunswick at the world's largest tech event</p>
                     </div>
                 </article>
-
-                <!-- Project 4: bol -->
-                <article class="work__item reveal">
-                    <div class="work__image-wrapper">
-                        <div class="work__image work__image--placeholder" style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);">
-                            <span class="work__image-text">bol</span>
-                        </div>
-                        <div class="work__overlay">
-                            <span class="work__category">Video • 3D • Motion</span>
-                        </div>
-                    </div>
-                    <div class="work__content">
-                        <h3 class="work__title">bol</h3>
-                        <p class="work__desc">Setting bol's Het Grote Speelgoedboek into motion</p>
-                    </div>
-                </article>
-            </div>
-
-            <div class="work__footer">
-                <a href="#" class="btn btn--text">View All Projects →</a>
             </div>
         </div>
     </section>
@@ -145,122 +152,136 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <header class="section-header section-header--center">
-                <span class="section-header__label">What We Do</span>
-                <h2 class="section-header__title">Full-service<br>content creation</h2>
-            </header>
+            <div class="services__header">
+                <span class="section-header__label" data-scroll>What We Do</span>
+                <h2 class="section-header__title" data-scroll>Full-service<br>content creation</h2>
+            </div>
 
             <div class="services__grid">
-                <div class="service-card reveal">
+                <div class="service-card" data-scroll>
+                    <div class="service-card__number">01</div>
                     <div class="service-card__icon">🎬</div>
                     <h3 class="service-card__title">Video</h3>
                     <p class="service-card__desc">From concept to final cut. Commercials, brand films, and everything in between.</p>
+                    <div class="service-card__line"></div>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card" data-scroll>
+                    <div class="service-card__number">02</div>
                     <div class="service-card__icon">✨</div>
                     <h3 class="service-card__title">Motion</h3>
                     <p class="service-card__desc">Dynamic motion graphics that bring your brand story to life.</p>
+                    <div class="service-card__line"></div>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card" data-scroll>
+                    <div class="service-card__number">03</div>
                     <div class="service-card__icon">🎮</div>
                     <h3 class="service-card__title">3D</h3>
                     <p class="service-card__desc">Photorealistic 3D renders and animations for products and environments.</p>
+                    <div class="service-card__line"></div>
                 </div>
 
-                <div class="service-card reveal">
+                <div class="service-card" data-scroll>
+                    <div class="service-card__number">04</div>
                     <div class="service-card__icon">🤖</div>
                     <h3 class="service-card__title">AI</h3>
                     <p class="service-card__desc">Cutting-edge AI-driven visuals and generative content.</p>
+                    <div class="service-card__line"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Clients Section -->
-    <section class="clients" id="clients">
-        <div class="container">
-            <p class="clients__intro">We've worked with brands of all sizes, from global players to ambitious teams.</p>
-            
-            <div class="clients__list">
-                <span class="client">Beter Bed</span>
-                <span class="client">Bol</span>
-                <span class="client">Bold</span>
-                <span class="client">Boston Whaler</span>
-                <span class="client">Brunswick</span>
-                <span class="client">Deloitte</span>
-                <span class="client">Flite</span>
-                <span class="client">Gemeente Den Haag</span>
-                <span class="client">Heritage Customs</span>
-                <span class="client">KPN</span>
-                <span class="client">NAVAN</span>
-                <span class="client">NATO</span>
-                <span class="client">Sea Ray</span>
+    <!-- Clients Marquee -->
+    <section class="clients-marquee" id="clients">
+        <div class="clients-marquee__text">Trusted by</div>
+        <div class="marquee-wrapper">
+            <div class="marquee">
+                <div class="marquee__inner">
+                    <span>Beter Bed</span><span>Bol</span><span>Bold</span><span>Boston Whaler</span>
+                    <span>Brunswick</span><span>Deloitte</span><span>Flite</span><span>Gemeente Den Haag</span>
+                    <span>Heritage Customs</span><span>KPN</span><span>NAVAN</span><span>NATO</span><span>Sea Ray</span>
+                </div>
+                <div class="marquee__inner" aria-hidden="true">
+                    <span>Beter Bed</span><span>Bol</span><span>Bold</span><span>Boston Whaler</span>
+                    <span>Brunswick</span><span>Deloitte</span><span>Flite</span><span>Gemeente Den Haag</span>
+                    <span>Heritage Customs</span><span>KPN</span><span>NAVAN</span><span>NATO</span><span>Sea Ray</span>
+                </div>
             </div>
-
-            <blockquote class="testimonial reveal">
-                <p class="testimonial__text">"The content came out perfect. We had many executives, colleagues and consumers commenting on the content. The brand teams across Brunswick are eager to use their slice of the Vision Theater for their purposes."</p>
-                <footer class="testimonial__footer">
-                    <cite class="testimonial__author">Eric Jensen</cite>
-                    <span class="testimonial__role">Video Marketing Strategy Specialist, Brunswick Corporation</span>
-                </footer>
-            </blockquote>
         </div>
     </section>
 
     <!-- Team Section -->
     <section class="team" id="about">
         <div class="container">
-            <header class="section-header">
-                <span class="section-header__label">Meet the Team</span>
-                <h2 class="section-header__title">Passionate makers<br>who like to build.</h2>
+            <header class="section-header section-header--center">
+                <span class="section-header__label" data-scroll>Meet the Team</span>
+                <h2 class="section-header__title" data-scroll>Passionate makers<br>who like to build.</h2>
             </header>
 
             <div class="team__grid">
-                <div class="team-member reveal">
+                <div class="team-member" data-scroll>
                     <div class="team-member__image-wrapper">
-                        <img src="images/ARNO-1.jpg" alt="Arno" class="team-member__image" loading="lazy">
+                        <img src="images/ARNO-1.jpg" alt="Arno" class="team-member__image">
+                        <div class="team-member__overlay">
+                            <span class="team-member__view">View Profile</span>
+                        </div>
                     </div>
                     <h3 class="team-member__name">Arno</h3>
                     <p class="team-member__role">Director, Executive Producer</p>
                 </div>
 
-                <div class="team-member reveal">
+                <div class="team-member" data-scroll>
                     <div class="team-member__image-wrapper">
-                        <img src="images/CHIEL-1.jpg" alt="Chiel" class="team-member__image" loading="lazy">
+                        <img src="images/CHIEL-1.jpg" alt="Chiel" class="team-member__image">
+                        <div class="team-member__overlay">
+                            <span class="team-member__view">View Profile</span>
+                        </div>
                     </div>
                     <h3 class="team-member__name">Chiel</h3>
                     <p class="team-member__role">Creative Director, Head of Post</p>
                 </div>
 
-                <div class="team-member reveal">
+                <div class="team-member" data-scroll>
                     <div class="team-member__image-wrapper">
-                        <img src="images/NISSE-1.jpg" alt="Nisse" class="team-member__image" loading="lazy">
+                        <img src="images/NISSE-1.jpg" alt="Nisse" class="team-member__image">
+                        <div class="team-member__overlay">
+                            <span class="team-member__view">View Profile</span>
+                        </div>
                     </div>
                     <h3 class="team-member__name">Nisse</h3>
                     <p class="team-member__role">3D Artist, Animator</p>
                 </div>
 
-                <div class="team-member reveal">
+                <div class="team-member" data-scroll>
                     <div class="team-member__image-wrapper">
-                        <img src="images/GIDEON.jpg" alt="Gideon" class="team-member__image" loading="lazy">
+                        <img src="images/GIDEON.jpg" alt="Gideon" class="team-member__image">
+                        <div class="team-member__overlay">
+                            <span class="team-member__view">View Profile</span>
+                        </div>
                     </div>
                     <h3 class="team-member__name">Gideon</h3>
                     <p class="team-member__role">Editor, AI Specialist</p>
                 </div>
 
-                <div class="team-member reveal">
+                <div class="team-member" data-scroll>
                     <div class="team-member__image-wrapper">
-                        <img src="images/JORIS.jpg" alt="Joris" class="team-member__image" loading="lazy">
+                        <img src="images/JORIS.jpg" alt="Joris" class="team-member__image">
+                        <div class="team-member__overlay">
+                            <span class="team-member__view">View Profile</span>
+                        </div>
                     </div>
                     <h3 class="team-member__name">Joris</h3>
                     <p class="team-member__role">Producer, Editor</p>
                 </div>
 
-                <div class="team-member reveal">
+                <div class="team-member" data-scroll>
                     <div class="team-member__image-wrapper">
-                        <img src="images/LENNARD.jpg" alt="Lennard" class="team-member__image" loading="lazy">
+                        <img src="images/LENNARD.jpg" alt="Lennard" class="team-member__image">
+                        <div class="team-member__overlay">
+                            <span class="team-member__view">View Profile</span>
+                        </div>
                     </div>
                     <h3 class="team-member__name">Lennard</h3>
                     <p class="team-member__role">Designer, Animator</p>
@@ -271,18 +292,18 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
+        <div class="contact__bg"></div>
         <div class="container">
             <div class="contact__content">
-                <span class="contact__label">Let's Create</span>
-                <h2 class="contact__title">Ready to bring<br>your ideas to life?</h2>
-                <p class="contact__text">Tell us about your project. We'll get back to you within 24 hours.</p>
+                <span class="contact__label" data-scroll>Let's Create</span>
+                <h2 class="contact__title" data-scroll>Ready to bring<br>your ideas to life?</h2>
+                <p class="contact__text" data-scroll>Tell us about your project. We'll get back to you within 24 hours.</p>
                 
-                <div class="contact__actions">
-                    <a href="mailto:hello@merged.cc" class="btn btn--primary btn--large">Start a Project</a>
-                    <a href="tel:+31612345678" class="btn btn--secondary btn--large">Call Us</a>
+                <div class="contact__actions" data-scroll>
+                    <a href="mailto:hello@merged.cc" class="btn btn--primary btn--large magnetic" data-magnetic>Start a Project</a>
                 </div>
 
-                <div class="contact__info">
+                <div class="contact__info" data-scroll>
                     <a href="mailto:hello@merged.cc" class="contact__link">hello@merged.cc</a>
                     <span class="contact__divider">•</span>
                     <span class="contact__location">Amsterdam, NL</span>
@@ -301,16 +322,16 @@
                 </div>
                 
                 <nav class="footer__nav">
-                    <a href="#work" class="footer__link">Work</a>
-                    <a href="#services" class="footer__link">Services</a>
-                    <a href="#about" class="footer__link">About</a>
-                    <a href="#contact" class="footer__link">Contact</a>
+                    <a href="#work" class="footer__link magnetic" data-magnetic>Work</a>
+                    <a href="#services" class="footer__link magnetic" data-magnetic>Services</a>
+                    <a href="#about" class="footer__link magnetic" data-magnetic>About</a>
+                    <a href="#contact" class="footer__link magnetic" data-magnetic>Contact</a>
                 </nav>
 
                 <div class="footer__social">
-                    <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
-                    <a href="#" class="footer__social-link" aria-label="LinkedIn">LI</a>
-                    <a href="#" class="footer__social-link" aria-label="Vimeo">VM</a>
+                    <a href="#" class="footer__social-link magnetic" data-magnetic aria-label="Instagram">IG</a>
+                    <a href="#" class="footer__social-link magnetic" data-magnetic aria-label="LinkedIn">LI</a>
+                    <a href="#" class="footer__social-link magnetic" data-magnetic aria-label="Vimeo">VM</a>
                 </div>
             </div>
             
@@ -319,6 +340,17 @@
             </div>
         </div>
     </footer>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal__overlay"></div>
+        <div class="video-modal__container">
+            <button class="video-modal__close" id="videoModalClose">×</button>
+            <div class="video-modal__wrapper">
+                <iframe src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
